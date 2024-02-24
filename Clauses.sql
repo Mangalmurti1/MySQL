@@ -53,7 +53,7 @@ select name,per from data order by per desc;
 select name from data order by salary desc;
 select * from data order by salary asc;
 
--------------------------------------------------------- HAVING --------------------------------------------------------------------------------------
+----------------------------------------------------------- HAVING --------------------------------------------------------------------------------------
 -- It is always used with GROUP BY clause. It is used to fetch records which is grouped already.
 -- Here select should have aggregate function in select list and in group by clause use column which is used in select list & in havind clause use column used in select.
 -- We can use it with select & group by clause.
