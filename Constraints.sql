@@ -119,4 +119,4 @@ select * from table_constraints;
 alter table second add foreign key(address) references first(roll_no);
 drop table second;
 commit;
-show create table first; -- to checck table information.
+show create table first; -- to check table information.
