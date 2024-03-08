@@ -62,3 +62,36 @@ select * from dept;
  --------------------------- Nested DELETE --------------------------------------------------------------------
  -- delete the records from employee table who belongs to 'sales' department.
  delete from emp where deptid in(select deptid from dept where deptname='sales');
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+use clause;
+show tables;
+select * from data;
+update data set per=71 where name='bhikaji';
+select max(per) from data;
+
+----------------------- NESTED QUERY WITH SELECT STATEMENT --------------------------------------
+
+-------- QUESTION: Find second highest salary ---------
+------ without using nested query & agregate function
+select * from data order by per desc limit 1 offset 1;
+
+------- Using nested query & agregate function
+select max(per),name,per from data where per < (select max(per) from data);
+
+------ QUESTION: Find all data of students who belongs to malwadi and per is greater than 70
+------ without Using nested query & agregate function
+select * from data where city='malwadi' and per>70;
+
+------ Using nested query & agregate function
+select * from data where city='malwadi' and per in (select per from data where per>70);
+
+
+---------------------------- NESTED QUERY USING UPDATE STATEMENT ------------------------------------------
+select * from data;
+------------ increase the per by 0.25 of student who scored more than 74
+------- without Using nested query & agregate function
+
+update data set per=per+(per*0.25) where per>74;
