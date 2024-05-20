@@ -41,7 +41,7 @@ select * from data where per=74.91 or city='sangli';
 
 
 --------------------------------------------------------- GROUP BY -----------------------------------------------------------------------------------
----- where clause is not used in aggregate functions so, to overcome this w can use Where clause. 
+---- where clause is not used in aggregate functions so, to overcome this w can use Group by clause. 
 -- Here select should have aggregate function in select list and in group by clause use column which is used in select list.
 --- We can use it with select & aggregate function
 select city,count(*) from data group by city;
