@@ -1,4 +1,5 @@
 -------------------------------------------------------- Clauses ---------------------------------------------------------------------------
+show databases; 
 create database clause;
 use clause;
 create table Data
@@ -34,6 +35,9 @@ update data set salary=25000 where name='Mahesh';
 update data set salary =20000 where roll_no=2 ;
 update data set salary= 32000 where dob='1990-06-01';
 select * from data;
+delete from data where dob='1990-06-01';
+insert into data values('Bhikaji',12,'1990-06-01',57.87,'Hatkanangale');
+select * from data where per=74.91 or city='sangli';
 
 
 --------------------------------------------------------- GROUP BY -----------------------------------------------------------------------------------
@@ -53,6 +57,7 @@ select name from data order by city;
 select name,per from data order by per desc;
 select name from data order by salary desc;
 select * from data order by salary asc;
+select * from data;
 
 ----------------------------------------------------------- HAVING --------------------------------------------------------------------------------------
 -- It is always used with GROUP BY clause. It is used to fetch records which is grouped already.
