@@ -48,6 +48,8 @@ select city,count(*) from data group by city;
 select sum(per),city from data group by city;
 select avg(per),city from data group by city;
 select name,sum(salary) from data group by name;
+select avg(per) from data group by per;
+select min(DOB) from data;
 
 
 --------------------------------------------------------- ORDER BY -----------------------------------------------------------------------------------
@@ -61,7 +63,7 @@ select * from data;
 
 ----------------------------------------------------------- HAVING --------------------------------------------------------------------------------------
 -- It is always used with GROUP BY clause. It is used to fetch records which is grouped already.
--- Here select should have aggregate function in select list and in group by clause use column which is used in select list & in havind clause use column used in select.
+-- Here select should have aggregate function in select list and in group by clause use column which is used in select list & in having clause use column used in select.
 -- We can use it with select & group by clause.
 select city,count(city) from data group by city having count(city)>2;
 select roll_no,sum(salary) from data group by roll_no having roll_no>7;
