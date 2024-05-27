@@ -71,7 +71,7 @@ select roll_no,sum(salary) from data group by roll_no having roll_no>7;
 select * from data having roll_no>5;
 select name,min(roll_no) from data where city='Sangli';  
 select city, count(*) from data group by city having count(city)>1;
-select distinct city from data;
+select distinct city from data; -- its is used to fetch the unique/distinct cities from the table data
 
 
 ------------------------------------------------------- BETWEEN --------------------------------------------------------------------------------------
