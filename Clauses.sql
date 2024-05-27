@@ -80,6 +80,5 @@ select distinct city from data; -- its is used to fetch the unique/distinct citi
 -- here both the values are inclusive 
 select * from data where salary between 20000 and 25000;
 select name,dob from data where dob between '1995-01-01' and '1998-01-01';
-
-
+select name,roll_no from data where roll_no between 1 and 2;
 select * from data where salary
