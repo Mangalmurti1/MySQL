@@ -19,6 +19,8 @@ alter table first modify column Name varchar(20) not null;
 alter table first modify column Name varchar(20);
 
 ------------------------------------------------------------------------------- DEFAULT ----------------------------------------------------------- -------------------------------------------------------
+-- We cannot directly give the name to default constarints like SQLServer and PostGreSQL.
+-- we can achieve similar functionality using named triggers or stored procedures.
 drop table first;
 -- While creation of table
 create table First
