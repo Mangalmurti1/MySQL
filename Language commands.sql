@@ -84,7 +84,7 @@ show grants; -- used to check the current user permissions. hit it from created 
 flush privileges; -- The newly granted permission for the user will be activated after executing the FLUSH PRIVILEGES command
 
 revoke insert on zink.just from 'new'@'localhost'; -- to get back given priviledges.
-revoke all privileges on zink.just from 'new'@'localhost';
+
 
 
 
