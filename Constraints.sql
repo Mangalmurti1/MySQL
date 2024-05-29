@@ -1,10 +1,11 @@
 show databases;
 create database constraints;
 use constraints;
+show tables;
 
 ----------------------------------------------------------------------------------- NOT NULL -------------------------------------------------------------------------
 -- It means value for that column should not be decalared as NULL. There should be something.
-
+-- MySql does not support direct syantax to give name to NOT NULL constraint.
 -- While creation of table
 create table First
 (
@@ -19,8 +20,9 @@ alter table first modify column Name varchar(20) not null;
 alter table first modify column Name varchar(20);
 
 ------------------------------------------------------------------------------- DEFAULT ----------------------------------------------------------- -------------------------------------------------------
--- We cannot directly give the name to default constarints like SQLServer and PostGreSQL.
+-- MySql does not support. We cannot directly give the name to default constarints like SQLServer and PostGreSQL.
 -- we can achieve similar functionality using named triggers or stored procedures.
+
 drop table first;
 -- While creation of table
 create table First
@@ -36,7 +38,8 @@ alter table first modify column name varchar(20) default 'mahesh';
 alter table first alter column name drop default;
 
 ------------------------------------------------------------------------------ CHECK --------------------------------------------------------------------
--- While creation of table
+-- We can give the name to the check contraint.
+-- creation of table
 create table First
 (
  Roll_no int ,
@@ -48,8 +51,10 @@ desc first;
 show databases;
 use information_schema;
 show tables;
-select *from check_constraints ; -- it will show information about all the applied check constraints in databases.
-
+select * from table_constraints;
+select * from check_constraints; -- it will show information about all the applied check constraints in databases.
+  -- OR --
+  Select * from information_schema.table_constraints where table_name='first';
 insert into first values(1,'mahesh'); -- it will give you error
 insert into first values(1,'rohit'); -- executed
 insert into first values(1,'rohi');-- it will give you error
@@ -61,6 +66,8 @@ alter table first drop constraint ch_k;
 select * from first;
 
 ------------------------------------------------------------------ UNIQUE ----------------------------------------------------------------------------------------
+-- It means column on which we have applied unique key constraint will not accepts duplicate values.
+-- We can give the name to the Unique contraint.
 drop table first;
 -- While creation of table
 create table First
@@ -73,11 +80,17 @@ insert into first values(1,'mah'); --- it gives you error because value of roll_
 --------- After creation of table
 alter table first add constraint unique (name);
 desc first;
+select * from first;
+insert into first values(19,'Mahesh');
+insert into first values(19,'Dinesh');
+
 ----------- DROP unique constraint
-alter table first drop index name;
+alter table first drop constraint roll_no; 
+
 
 ----------------------------------------------------------------------- PRIMARY KEY ----------------------------------------------------------------------------
------- it is a combination of NOT NULL & UNIQUE constraint. we can define only one primary key in a single table.
+-- We can give name to the primary key constarint while create/alter the table.but it will not reflect in information_schema database.
+-- it is a combination of NOT NULL & UNIQUE constraint. we can define only one primary key in a single table.
 drop table first;
 -- While creation of table
 create table First
@@ -92,6 +105,7 @@ alter table first drop primary key;
 alter table first add primary key(name);
 
 ---------------------------------------------------------------------- FOREIGN KEY-------------------------------------------------------------------------------
+-- The table with the foreign key is called the child table & table with primary key is called the Parent table. 
 -- it requires the two tables
 drop table first;
 -- While creation of table
@@ -111,7 +125,7 @@ desc second;
 ---------------- DROP foreign 
 alter table second drop foreign key second_ibfk_1;
 
--------------- fter creation of table
+-------------- After creation of table
  -- check the constraints applied on databases
  show databases;
  use information_schema;
