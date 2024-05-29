@@ -112,7 +112,17 @@ alter table first add primary key(name);
    2. Matching Values: The value of a foreign key must match an existing value in the referenced primary key column
    3. We cant add new row in child table (foreign key table), it violates the rules.
    4. We can update or delete parent table data if we add ON Delete set null & on delete CASCADE 
-   requires the two tables
+    e.g.   create table orders
+          (
+			orderId int primary key,
+			orderdate date not null,
+			customerID int ,
+			foreign key(customerID) references customers(customerID)
+			on delete set null
+			on update cascade
+		  );
+	it means that if we delete from parent table then same entry from child table get deleted.
+    and if we update parent data then same data in child get updated.
 drop table first;
 */
 -- While creation of table
