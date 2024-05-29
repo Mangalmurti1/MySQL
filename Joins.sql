@@ -1,5 +1,5 @@
-create database juin;
-use juin;
+create database joindb;
+use joindb;
 create table student
 (
   roll_no int,
@@ -42,5 +42,52 @@ select studentCourse.course_id,student.name,student.age,student.address from stu
 -- it returns all the data between two tables
 select studentCourse.course_id,student.name,student.age,student.address from studentCourse full join student on studentCourse.roll_no=student.roll_no;
 
+
+/* create table first
+(
+ name varchar(20),
+ roll_no int
+);
+
+create table second
+(
+ DOB date,
+ address varchar(40)
+
+);
+
+insert into first values('mahesh',1),('Suhas',2),('Sudham',3),('Dinkar',4);
+truncate table first;
+select * from first;
+alter table first add constraint primary key(roll_no);
+alter table second add column roll_no int;
+desc second;
+alter table second add foreign key(roll_no) references first(roll_no);
+
+insert into second values('1995-08-01','Bhilawadi',1),('1995-07-02','Sukhwadi',2);
+select * from second;
+
+-- INNER JOIN --
+select first.name,first.roll_no, second.DOB, second.address from first inner join second on first.roll_no=second.roll_no;
+
+-- LEFT JOIN --
+select first.*, second.* from first left join second on first.roll_no=second.roll_no;
+
+-- RIGHT JOIN --
+select first.*,second.* from first right join second on first.roll_no =second.roll_no;
+
+-- FULL JOIN --
+select first.*,second.* from first left join second on first.roll_no=second.roll_no 
+union
+select first.*, second.* from first right join second on first.roll_no=second.roll_no;
+
+-- SELF JOIN ---------*/
+create table selfjoin
+(
+ roll_no int,
+name varchar(20)
+);
+insert into selfjoin values(1,'Mahesh'),(2,'Rakesh');
+select t1.roll_no,t2.name from selfjoin as t1,selfjoin as t2 on t1.roll_no=t2.roll_no;
 
 
