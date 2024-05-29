@@ -106,8 +106,15 @@ alter table first add primary key(name);
 
 ---------------------------------------------------------------------- FOREIGN KEY-------------------------------------------------------------------------------
 -- The table with the foreign key is called the child table & table with primary key is called the Parent table. 
--- it requires the two tables
+ /* Basic Rules: 
+   1. Referential Integrity: A foreign key in one table points to a primary key in another table,.. 
+   ...ensuring that the relationship between the two tables remains consistent.
+   2. Matching Values: The value of a foreign key must match an existing value in the referenced primary key column
+   3. We cant add new row in child table (foreign key table), it violates the rules.
+   4. We can update or delete parent table data if we add ON Delete set null & on delete CASCADE 
+   requires the two tables
 drop table first;
+*/
 -- While creation of table
 create table First
 (
