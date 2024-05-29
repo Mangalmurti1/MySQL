@@ -88,6 +88,49 @@ create table selfjoin
 name varchar(20)
 );
 insert into selfjoin values(1,'Mahesh'),(2,'Rakesh');
-select t1.roll_no,t2.name from selfjoin as t1,selfjoin as t2 on t1.roll_no=t2.roll_no;
+select t1.roll_no,t2.name from selfjoin t1,selfjoin t2 where t1.roll_no=t2.roll_no;
+
+--- JOIN THREE TABLES ----------------------------------------------
+CREATE TABLE employees 
+(
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    department_id INT
+);
+
+INSERT INTO employees VALUES
+(1, 'John', 'Doe', 1),
+(2, 'Jane', 'Smith', 2),
+(3, 'Jim', 'Brown', 1);
+select * from employees; 
+
+CREATE TABLE departments 
+(
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+
+INSERT INTO departments VALUES
+(1, 'HR'),
+(2, 'Engineering');
+select * from departments;
+
+CREATE TABLE projects 
+(
+    project_id INT PRIMARY KEY,
+    project_name VARCHAR(50),
+    department_id INT
+);
+
+
+INSERT INTO projects VALUES
+(1, 'Recruitment', 1),
+(2, 'Software Development', 2);
+select * from projects;
+
+SELECT e.employee_id, e.first_name, e.last_name, d.department_name, p.project_name 
+FROM employees e JOIN departments d ON e.department_id = d.department_id
+JOIN projects p ON d.department_id = p.department_id;
 
 
