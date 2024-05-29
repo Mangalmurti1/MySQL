@@ -69,7 +69,7 @@ create user 'shambho'@'localhost' identified by 'shambho';
 grant select on zink.just to 'shambho'@'localhost';
 show grants for 'shambho'@'localhost';
 revoke select on zink.just from 'shambho'@'localhost';
-grant all privileges on *.* to 'shambho'@'localhost'; -- first * denotes all d
+grant all privileges on *.* to 'shambho'@'localhost'; -- first * denotes all databases and 
 
 -- Unfortunately MySQL does not have a single command to revoke all privileges at once. So, use below one
 revoke all privileges, grant option from 'shambho'@'localhost';
