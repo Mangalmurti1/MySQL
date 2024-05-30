@@ -11,8 +11,15 @@ create table just
   name varchar(20),
   marks float(4,2)
 );
-
+-- Change the order of existing column in the tables
+use practice;
+desc first;
+alter table first modify column name varchar(20) after roll_no;
+desc second;
 show tables;
+
+
+
 describe just;
 desc just;
 alter table just add column designation varchar(20);
@@ -58,11 +65,16 @@ select * from user;
 
 -------------------------------------- DCL -------------------------------------------------
 /*
+The MySQL hostname defines the location of your MySQL server and database.
+localhost: The user can only connect from the local machine where the MySQL server is running.
+
+If you want to change user from current screen then you can simply use 'quit' command.
 
 select user from mysql.user;
 login with root user(workbench)->create new user->grant permission
 login with created user by root (command line)->work on it like see db,user etc.
-create user 'saddam'@'localhost' identified by 'saddam'; -- create user*/
+create user 'saddam'@'localhost' identified by 'saddam'; -- create user
+The MySQL hostname defines the location of your MySQL server and database.*/
 drop user 'saddam'@'localhost';
 ------------------------------------------
 create user 'shambho'@'localhost' identified by 'shambho';
