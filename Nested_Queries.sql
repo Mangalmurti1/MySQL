@@ -15,6 +15,7 @@ create table dept
 );
 
 insert into emp values('Mahesh',1),('Dhiraj',2),('Muskan',3);
+insert into emp values('Rugved',5);
 insert into dept values('Sales',4),('HR',5),('Admin',6);
 
 update dept set deptid=1 where deptname='sales';
@@ -95,3 +96,25 @@ select * from data;
 ------- without Using nested query & agregate function
 
 update data set per=per+(per*0.25) where per>74;
+
+
+
+------------------------------------------ NESTED QUERIES with SELECT Statement using different operators -------------------
+use nested;
+show tables;
+select * from emp;
+select * from dept;
+-- 1. IN - find name, address of employees which belongs to HR department.
+select ename from emp where deptid in(select deptid from dept where deptname='HR');
+
+--- INSERT 
+insert into emp (deptid)
+select deptid from dept where deptid in(select deptid from dept where deptid=6);
+
+------- UPDATE -------------
+update emp set ename='Surendra' where deptid in(select deptid from dept where deptid=6);
+
+---------- DELETE ---------------
+delete from dept where deptid in(select deptid from emp where deptid=6);
+
+

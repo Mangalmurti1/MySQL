@@ -47,4 +47,24 @@ select roll_no from first union all select roll_no from second;
 show tables;
 select * from customers;
 select upper(name) from customers;
-select concat() 
+select upper('mangalmurti');
+
+select lower(name) from customers;
+select lower('DInEsH');
+
+select concat(name,email) from customers; -- joins two strings/characters 
+select concat('A','+','B');
+
+select substring('Mahesh',1,3);
+
+select left('MAHESH',4);
+
+Select right('Baba',2);
+
+select length('rokade');
+
+select replace('mahesh','mah','mant');
+
+select trim('    mahesh    ');
+
+select locate('pe','Dipesh');
