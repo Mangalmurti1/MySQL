@@ -86,7 +86,8 @@ select * from data where salary;
 ---------------------------------------------------- LIMIT & OFFSET -------------------------------------------------------------
 /* LIMIT clause is used to specify the maximum number of rows that the query should return.
    OFFSET clause is used to specify the number of rows to skip before starting to return rows from the query. */
- select * from data1 limit 2; -- It will fetch the top 2 records
+use clause;
+select * from data1 limit 2; -- It will fetch the top 2 records
 select * from data1 limit 1 offset 2; -- It will fetch the third record from table 
 select * from data1 order by per desc limit 1 offset 2; -- It will fetch the third largest per from table
 select * from data1 limit 2,1; -- It will fetch third record from table. Here, limit 2,1 means it will skip first 2 records & print next record.
