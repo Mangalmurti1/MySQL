@@ -9,3 +9,4 @@ rename fourth column
 describe the table.
 
 DML:
+Insert data into it.
