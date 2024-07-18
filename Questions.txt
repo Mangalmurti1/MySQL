@@ -1,0 +1,84 @@
+DDL:
+Check available databases
+create new database
+create table  in newly created database.
+inser new column at last,first and after the second column.
+modify data type of third column.
+Rename table 
+rename fourth column
+describe the table.
+Drop perticular column/table/Database
+truncate/remove data from table.
+
+DML:
+Insert data into created table.
+delete the perticular record.
+Delete all records.
+Update/modify existing data.
+
+TCL:
+commit 
+rollback
+savepoint
+
+DCL:
+create new user and give read/write/All accesses him/her.
+revoke given permissions from user.
+check given permission of user.
+
+Clauses:
+Where-condition
+having-condition
+order by
+group by
+
+Operators:
+SET
+IN
+NOT IN
+Between
+OR
+AND
+LIKE
+IS NULL
+NULL
+Distinct
+Union
+Union ALL
+
+Constraints:
+Not null
+Unique
+check
+Default
+primary key
+foerign key
+
+Functions:
+String related functions-upper,lower,initcap,substring, concat,trim,Ltrim,Rtrim,Replace,Reverse.
+Numeric - Abs,Power,sqrt,round,ceil,floor.MOD.Least,Greatest.
+date, timestamp
+
+
+Join:
+Left,right,full,Inner
+Join two/three/four tables.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
