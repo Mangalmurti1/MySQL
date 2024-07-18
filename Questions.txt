@@ -1,0 +1,5 @@
+create table & insert data into it.
+inser new column at last,first and after the second column.
+modify data type of third column.
+Rename table 
+rename fourth column
