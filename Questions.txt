@@ -7,3 +7,5 @@ modify data type of third column.
 Rename table 
 rename fourth column
 describe the table.
+
+DML:
