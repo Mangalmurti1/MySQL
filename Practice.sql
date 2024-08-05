@@ -201,3 +201,309 @@ select substr(first_name,1,4) from employee;
 select * from employee;
 select * from employee where hire_date like '____-01-__';
 
+ -- *****************************************20JULY24 ******************************************************
+ show databases;
+ create database 20july;
+ use 20july;
+ show databases;
+ 
+ create table vivek(
+  name varchar(20),
+ age int ,
+ DOB date,
+ per float(4,2)
+ );
+ show tables;
+ show create table vivek;
+ desc vivek;
+ 
+ alter table vivek add column blood_group text;
+ alter table vivek modify column blood_group text after name;
+ alter table vivek modify column age int;
+ 
+ 
+ alter table vivek rename mahesh;
+ drop table mahesh;
+ alter table mahesh rename column per to marks;
+ 
+ alter table mahesh drop column marks;
+ 
+ insert into vivek (name,age,DOB,per) values('Mahesh',29,'1995-08-17',72.25);
+ select * from vivek;
+ insert into vivek values('Shivam',17,'2004-08-31',67.00);
+ truncate table vivek;
+ delete from vivek where name='Mahesh';
+ 
+ select name, date_format(DOB,'%d/%m/%Y') as changed_format_of_date from vivek;
+ update vivek set name='Mukesh' where name='mahesh';
+ update vivek set age=21 where per between 65 and 70 or DOB ='1995-09-23';
+ 
+ set autocommit=0;
+ -- Except DML all other language commands are autocommitted.
+ select * from vivek;
+ insert into vivek values('Kedar',22 ,'2011-04-9',89.00);
+ commit;
+ rollback;
+ 
+ start transaction;
+ insert into vivek values('Vaishnavi',45,'2005-10-17',71.00);
+ update vivek set age=32 where name='vikalp';
+ commit;
+ 
+ start transaction;
+ savepoint sp1;
+ delete from vivek where age=45;
+ 
+ rollback to savepoint sp1;
+ 
+ select user from mysql.user;
+ create user 'Dilip'@'localhost' identified by 'Dilip';
+ show grants for 'mahesh'@'localhost';
+ grant select on joindb.customers to 'Dilip'@'localhost';
+ revoke select on joindb.customers from 'Dilip'@'localhost';
+ grant all privileges on *.* to 'Dilip'@'localhost';
+ flush privileges;
+ grant reload on *.* to 'Dilip'@'localhost';
+ flush privileges;
+ grant ALL PRIVILEGES on *.* to 'Dilip'@'localhost';
+ flush privileges;
+ show grants for 'Dilip'@'localhost';
+ grant ALL PRIVILEGES on joindb.* to 'Dilip'@'localhost';
+
+
+use joindb;
+show tables;
+select * from customers;
+select name from customers where customerid=1;
+select * from employee;
+
+select * from employee having hire_date between '2018-01-01' and '2019-04-01' order by hire_date asc;
+select  employee_id,salary,department_id from employee group by salary having salary between 60000 and 70000 order by salary;
+select avg(salary) from employee;
+select min(salary) from employee;
+select first_name from employee where employee_id in(1,9,7);
+select * from employee where salary not in (75000,68750);
+select first_name from employee where department_id = 1 or salary=1000;
+select * from employee where first_name like '_o%';
+select * from employee order by salary desc limit 1;
+select distinct department_id from employee order by department_id;
+
+use 20july;
+show tables;
+
+drop table vivek;
+create table vivek(
+ name varchar(20),
+ age int,
+ DOB date,
+ per float(4,2)
+ );
+ 
+ show create table vivek;
+ desc vivek;
+ insert into vivek (DOB,per) values('1998-09-09',78.78);
+ alter table vivek modify column name varchar(20);
+ select * from vivek;
+ 
+ alter table vivek alter column name drop default;
+ 
+ alter table vivek add constraint unique(age);
+ 
+ insert into vivek values('mahesh',12,'2022-09-09',89.76),('Mahesh',12,'1998-12-31',67.87);
+ 
+ alter table vivek drop constraint age;
+ 
+ 
+ 
+-- **************************************** Nth salary ******************************************************** 
+use joindb;
+ select * from employee;
+ select salary from employee order by salary desc; 
+
+SELECT first_name,salary FROM employee e1 WHERE 4-1 = 
+( SELECT COUNT(DISTINCT salary) 
+FROM employee e2 WHERE e2.salary > e1.salary
+);
+ 
+ 
+ SELECT  * FROM employee limit 2;
+
+ select salary from employee order by salary desc limit 2,1;
+ select max(salary) from employee where salary < (select max(salary) from employee where salary <(select max(salary) from employee));
+ select min(salary) from employee where salary > (select min(salary) from employee where salary > (select min(salary) from employee));
+ 
+ -- ****************************JOIN**************************************
+ -- self join 
+ select e1.*, e2.* FROM employee e1 JOIN employee e2 ON e1.employee = e2.employee;
+ 
+select * from customers;
+select * from orders;
+delete from orders where orderid=104;
+
+select customers.*,orders.* from customers left join orders on customers.customerid=orders.customerid;
+select customers.name,orders.amount from customers left join orders on customers.customerid=orders.customerid;
+
+select customers.*,orders.* from customers right join orders on customers.customerid=orders.customerid;
+select customers.*,orders.* from customers inner join orders on customers.customerid=orders.customerid;
+
+
+select customers.*,orders.* from customers left join orders on customers.customerid=orders.customerid
+union
+select customers.*,orders.* from customers right join orders on customers.customerid=orders.customerid;
+
+select customers.customerid,customers.name,orders.amount from customers left join orders on customers.customerid = orders.customerid;
+select customers.*,orders.* from customers right join orders on customers.customerid = orders.customerid; 
+select customers.*,orders.* from customers inner join orders on customers.customerid = orders.customerid;
+
+select customers.*,orders.* from customers join orders on customers.customerid = orders.customerid;
+
+ select customers.*,orders.* from customers left join orders on customers.customerid = orders.customerid
+ union
+ select customers.*,orders.* from customers right join orders on customers.customerid = orders.customerid;
+ 
+ select * from customers cross join orders;
+ 
+  select * from employee;
+  select count(*),department_id from employee 
+  group by department_id having count(department_id)>1;
+ 
+  
+  select upper(first_name) from employee;
+  select lower(first_name) from employee;
+  select concat(first_name,last_name) as fullname from employee;
+  select substr(first_name,1,3) from employee;
+  
+  select salary from employee e1 where 4-1=(select count(distinct salary)from employee e2 where e2.salary>e1.salary);
+  
+  -- *************************JOIN Three tables **************************************
+  
+  create database join3tables;
+  use join3tables;
+  show tables;
+  create table departments(
+    department_id int primary key,
+    department_name varchar(20)
+    );
+    
+    create table positions(
+    position_id int primary key,
+    position_name varchar(20)
+    );
+  
+  create table employee(
+  employee_id int primary key,
+  employee_name varchar(30),
+  department_id int,
+  position_id int,
+  foreign key(department_id) references departments(department_id),
+  foreign key(position_id) references positions(position_id)
+  );
+  
+  INSERT INTO departments (department_id, department_name) VALUES
+(201, 'HR'),
+(202, 'IT'),
+(203, 'Finance');
+select * from departments;
+
+INSERT INTO positions (position_id, position_name) VALUES
+(101, 'Manager'),
+(102, 'Developer'),
+(103, 'Analyst'),
+(104, 'Designer');
+
+select * from positions;
+
+INSERT INTO employee (employee_id, employee_name, position_id, department_id) VALUES
+(1, 'Alice', 101, 201),
+(2, 'Bob', 102, 202),
+(3, 'Charlie', 101, 201),
+(4, 'David', 103, 203),
+(5, 'Eve', 104, 202);
+
+select * from employee;
+
+SELECT e.employee_name, p.position_name, d.department_name
+FROM employee e JOIN positions p ON e.position_id = p.position_id 
+JOIN departments d ON e.department_id = d.department_id;				
+				
+
+ 
+ 
+ use mock;
+SELECT e.employee_id, e.first_name, e.last_name, d.department_name, p.project_name 
+FROM employees e JOIN departments d ON e.department_id = d.department_id
+JOIN projects p ON d.department_id = p.department_id;
+
+
+create table just
+(
+ name varchar(20),
+ id int primary key
+ ); 
+desc just;
+
+show databases;
+use information_schema;
+show tables;
+select * from table_constraints where table_name='just';
+
+
+
+use join3tables;
+drop table just;
+show create table just;
+alter table just alter column name drop default;
+
+alter table just drop constraint chk;
+alter table just add constraint chck check(id<5);
+select * from information_schema.table_constraints where table_name='just';
+
+alter table just drop constraint id;
+
+show tables;
+create table Country
+(
+  id int primary key,
+  country_name varchar(20)
+  );
+  desc country;
+  create table state
+  (
+    id int primary key,
+    state_name varchar(20),
+    country_id int,
+    foreign key(country_id) references country(country_id)
+    );
+desc state;
+alter table country rename column id to country_id;
+
+insert into country values(1,'USA'),(2,'India'),(3,'Zimbabve'),(4,'portugal');
+select * from country;
+
+insert into state values(101,'California',1),
+						(102,'Texas',1),
+                        (201,'Maharshtra',2),
+                        (202,'Dhule',2),
+                        (301,'Harare',3),
+                        (302,'Bulawayo',3),
+                        (401,'Minho',4),
+                        (402,'Algarve',4);
+                        
+                        select * from state;
+                        
+select country.country_name,state.state_name from country join state on country.country_id=state.country_id where state.country_id=4;
+
+show tables;
+create procedure Mahesh()
+select * from country
+-- select * from departments where department_id=201;
+GO;
+
+
+call mahesh();
+
+select * from information_schema.routines where routine_name='Mahesh';
+drop procedure mahesh;
+
+
+

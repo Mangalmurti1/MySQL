@@ -2,6 +2,7 @@ DDL:
 Check available databases
 create new database
 create table  in newly created database.
+Change the order of columns.
 inser new column at last,first and after the second column.
 modify data type of third column.
 Rename table 
@@ -45,6 +46,8 @@ NULL
 Distinct
 Union
 Union ALL
+limit
+offset
 
 Constraints:
 Not null
@@ -63,6 +66,15 @@ date, timestamp
 Join:
 Left,right,full,Inner
 Join two/three/four tables.
+
+PL/SQL
+
+Stored procedure
+Triggers
+Functions
+Views
+
+
 
 
 
