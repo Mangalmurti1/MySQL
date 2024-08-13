@@ -505,5 +505,38 @@ call mahesh();
 select * from information_schema.routines where routine_name='Mahesh';
 drop procedure mahesh;
 
+use 20july;
+show tables;
+desc vivek;
+alter table vivek modify column age int default(18);
+alter table vivek modify column name varchar(20) default 'mahesh';
 
+insert into vivek(DOB,per) values('1995-08-17',56.78);
+select * from vivek;
+select v1.*,v2.* from vivek v1 join vivek v2 on v1.age = v2.age;
 
+select * from state;
+
+-- ****************************************** 13 AUG 24 **************************************************
+use assignment1;
+show tables;
+select * from mahesh;
+insert into mahesh values(1,'mahesh','rokade'),(2,'Baba','Sathe');
+alter table mahesh add column gender varchar(20);
+update mahesh set gender='Male' where roll_no=1;
+update mahesh set gender='Female' where roll_no=2;
+
+update mahesh 
+set gender= case
+     when gender ='Male' then 'Female'
+     when gender ='Female' then 'Male'
+     else gender
+     end;
+     
+     
+ -- Swap the gender 
+ update mahesh 
+ set gender= CASE
+			WHEN gender ='Male' THEN 'Female'
+			WHEN gender ='Female' THEN 'MALE'
+            END;
