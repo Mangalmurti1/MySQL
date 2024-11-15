@@ -1,5 +1,8 @@
 --------------------------------------------- DDL -------------------------------------------------------
--- All the DDL commands are auto commited. 
+/* All the DDL commands are auto commited. 
+   CREATE, ALTER, TRUNCATE, DROP, COMMENT , RENAME
+   This commands are used to create and manage the structure of the database.
+*/
 create database zink;
 show databases;
 select user from mysql.user;
