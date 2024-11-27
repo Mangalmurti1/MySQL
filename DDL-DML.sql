@@ -32,7 +32,9 @@ Alter table just rename to just_1;
 Alter table just_1 rename to just;
 show tables;
 ------------------------------------- DML ---------------------------------------------
--- All the DML commands are not autocommited. we should set(enable) it by using SET autocommit=1; and disable it by using Set autocommit=0;
+/*All the DML commands are not autocommited. we should set(enable) it by using SET autocommit=1; and disable it by using Set autocommit=0;
+DML commands: SELECT,INSERT,UPDATE & DELETE
+*/
 select * from just;
 insert into just (cycle,roll_no,name) values(101,1,'Mahesh');
 alter table just modify column new_profile varchar(13);
