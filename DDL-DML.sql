@@ -47,20 +47,7 @@ update just set name='Chandu' where roll_no not in(2);
 
 
 --------------------------------------- TCL ---------------------------------------------
-/*
-  COMMIT,ROLLBACK and SAVEPOINT are the TCL commands.
 
-  COMMIT: As we were seen that DDL commands are auto committed but others are not. so, we can use commit command to save the changes permanantly.
-          It is also used to saves all changes made in the current transaction to the database.
-       Use Case: To make sure that changes are permanent.
-  TRANSACTION: set of sql statements.
-
-  ROLLBACK: Reverts all changes made in the current transaction since the last COMMIT or START TRANSACTION
-      Use Case: To undo changes if an error occurs or a condition is not met.
-
-  SAVEPOINT: Sets a point within a transaction to which you can roll back.
-      Use Case: To partially undo a transaction up to a specific point.
-*/
 set autocommit=0; -- it is used to disable to autocommit. enable it by using 1.
 
 use zink;
