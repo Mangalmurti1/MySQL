@@ -111,7 +111,8 @@ alter table first add primary key(name);
    ...ensuring that the relationship between the two tables remains consistent.
    2. Matching Values: The value of a foreign key must match an existing value in the referenced primary key column
    3. We cant add new row in child table (foreign key table), it violates the rules.
-   4. We can update or delete parent table data if we add ON Delete set null & on delete CASCADE 
+   4. We cannot modify column on which we have applied foreign key constraint
+   5. We can update or delete parent table data if we add ON Delete set null & on delete CASCADE 
     e.g.   create table orders
           (
 			orderId int primary key,
