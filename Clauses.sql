@@ -91,3 +91,51 @@ select * from data1 limit 2; -- It will fetch the top 2 records
 select * from data1 limit 1 offset 2; -- It will fetch the third record from table 
 select * from data1 order by per desc limit 1 offset 2; -- It will fetch the third largest per from table
 select * from data1 limit 2,1; -- It will fetch third record from table. Here, limit 2,1 means it will skip first 2 records & print next record.
+
+
+-------------------------------------- EXERCISE -------------------------------------------------------------------------------
+use clause;
+ show tables;
+ select * from data;
+ INSERT INTO data (name, roll_no, DOB, per, city)
+VALUES
+    ('Alice', 101, '2000-05-12', 89.50, 'New York'),
+    ('Bob', 102, '2001-07-19', 78.75, 'Los Chicago'),
+    ('Charlie', 103, '1999-11-23', 92.40, 'Chicago'),
+    ('Diana', 104, '2002-03-15', 85.20, 'Houston'),
+    ('Ethan', 105, '2000-12-09', 91.60, 'New york');
+
+ update data set city='Chicago' where roll_no=101;
+
+ -- 1. SELECT Clause -- Retrieve all columns from the data table.
+ select * from data;
+ 
+ -- 2. WHERE Clause -- Retrieve records where the percentage (per) is greater than 85.
+select * from data where per>85;
+
+-- 3. ORDER BY Clause -- Sort the records by per in descending order.
+select * from data order by per desc;
+
+-- 4. GROUP BY Clause -- Group records by city and calculate the average percentage of students in each city.
+select city,avg(per) from data group by city;
+
+-- 5. HAVING Clause -- Filter groups where the average percentage is greater than 85. 
+select avg(per) as Avg_per,city from data group by city having avg(per)>85;
+
+-- 6. DISTINCT Clause -- Retrieve distinct cities from the data table.
+select distinct(city) from data;
+
+-- 7. LIMIT  -- Retrieve the top 3 students with the highest percentages.
+select * from data order by per desc limit 3; 
+
+-- 8. OFFSET -- Retrieve the third highest percentage from the table 'Data'.
+ select * from data order by per desc limit 1 offset 2;
+ 
+-- 9. Find nth highest percentage -- GENERIC QUERY - just replace n with expected highest percentage
+SELECT per 
+FROM data d1 
+WHERE 3-1 = (
+    SELECT COUNT(DISTINCT per) 
+    FROM data d2 
+    WHERE d2.per > d1.per
+);
