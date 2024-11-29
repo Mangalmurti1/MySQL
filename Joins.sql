@@ -1,3 +1,9 @@
+/*
+We do not need a foreign key constraint to perform a join operation in MySQL. 
+Joins are based purely on the logic of matching column values, and they do not require explicit database-enforced relationships
+like foreign key constraints. However, having a foreign key can help maintain data integrity and consistency between related tables.
+*/
+
 create database joindb;
 use joindb;
 create table student
@@ -132,5 +138,50 @@ select * from projects;
 SELECT e.employee_id, e.first_name, e.last_name, d.department_name, p.project_name 
 FROM employees e JOIN departments d ON e.department_id = d.department_id
 JOIN projects p ON d.department_id = p.department_id;
+
+show tables;
+
+------------------------------- EXERCISE ---------------------------------------------------------------------------------
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50) NOT NULL,
+    department_id INT
+);
+
+INSERT INTO Employees (emp_id, emp_name, department_id) VALUES
+(1, 'Alice', 101),
+(2, 'Bob', 102),
+(3, 'Charlie', NULL),
+(4, 'Diana', 103),
+(5, 'Eve', 101);
+
+CREATE TABLE Departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50) NOT NULL
+);
+
+INSERT INTO Departments (department_id, department_name) VALUES
+(101, 'HR'),
+(102, 'IT'),
+(103, 'Sales'),
+(104, 'Marketing');
+
+CREATE TABLE Projects (
+    project_id INT PRIMARY KEY,
+    project_name VARCHAR(50) NOT NULL,
+    emp_id INT
+);
+
+INSERT INTO Projects (project_id, project_name, emp_id) VALUES
+(201, 'Project Alpha', 1),
+(202, 'Project Beta', 2),
+(203, 'Project Gamma', 4),
+(204, 'Project Delta', NULL);
+
+select * from departments;
+select * from employees;
+select * from projects; 
+
+
 
 
