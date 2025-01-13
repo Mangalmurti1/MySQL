@@ -182,6 +182,20 @@ select * from departments;
 select * from employees;
 select * from projects; 
 
+-- 1. INNER JOIN-- Question: List all employees with their department names.
+select employees.emp_name, employees.department_id,departments.department_name 
+from employees inner join departments on departments.department_id=employees.department_id;
+
+-- 2. LEFT JOIN -- Question: List all employees along with their department names, including employees who are not assigned to any department.
+SELECT e.emp_name, d.department_name
+FROM Employees e
+LEFT JOIN Departments d ON e.department_id = d.department_id;
+
+-- 3. RIGHT JOIN -- Question: List all departments along with the employees assigned to them, including departments that have no employees.
+SELECT e.emp_name, d.department_name
+FROM Employees e
+RIGHT JOIN Departments d ON e.department_id = d.department_id;
+
 
 
 
